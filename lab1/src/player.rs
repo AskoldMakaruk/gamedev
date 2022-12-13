@@ -4,6 +4,7 @@ use bevy::{
 };
 
 use crate::{MouseMoveEvent, Movable, Turret};
+use bevy_rapier3d::prelude::*;
 
 pub struct PlayerPlugin;
 
@@ -37,6 +38,9 @@ pub fn spawn_player(
             additional_rotation: std::f32::consts::PI,
             ..default()
         })
+        .insert(Collider::ball(1.))
+        .insert(RigidBody::KinematicPositionBased)
+        .insert(KinematicCharacterController::default())
         .with_children(|parent| {
             parent
                 .spawn(PbrBundle {

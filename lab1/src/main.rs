@@ -8,8 +8,7 @@ use bevy_prototype_lyon::prelude::*;
 use std::ops::*;
 
 use bevy_inspector_egui::WorldInspectorPlugin;
-// pub mod startup;
-// pub use startup::*;
+use bevy_rapier3d::prelude::*;
 
 pub mod mouse;
 pub use mouse::*;
@@ -34,6 +33,8 @@ fn main() {
         .add_startup_system(startup)
         .add_event::<MouseMoveEvent>()
         .add_system(my_cursor_system)
+        .add_plugin(RapierPhysicsPlugin::<NoUserData>::default())
+        .add_plugin(RapierDebugRenderPlugin::default())
         .run();
 }
 

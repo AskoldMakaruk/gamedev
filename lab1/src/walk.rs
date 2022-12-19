@@ -1,7 +1,7 @@
 use std::ops::{Add, Mul};
 
 use bevy::prelude::*;
-use bevy_rapier3d::prelude::KinematicCharacterController;
+use bevy_rapier2d::prelude::KinematicCharacterController;
 
 pub struct MovePlugin;
 
@@ -33,7 +33,7 @@ fn move_system(mut query: Query<(&mut KinematicCharacterController, &Movable)>, 
         pos.translation = Some(
             pos.translation
                 .unwrap_or(default())
-                .add(mov.speed.mul(250. * time.delta_seconds()).extend(0.)),
+                .add(mov.speed.mul(250. * time.delta_seconds())),
         );
     }
 }

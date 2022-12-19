@@ -4,7 +4,7 @@ use bevy::{
 };
 
 use crate::{MouseMoveEvent, Movable, Turret};
-use bevy_rapier3d::prelude::*;
+use bevy_rapier2d::prelude::*;
 
 pub struct PlayerPlugin;
 
